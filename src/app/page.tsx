@@ -1,21 +1,26 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import mobile from "../../public/mobile.svg";
 import desktop from "../../public/desktop.svg";
-import page from "./submission/[email]/page";
-import Link from "next/link";
+
 import { useState, FormEvent } from "react";
-import {useRouter} from 'next/navigation'
+import { useRouter } from "next/navigation";
 
-export default function Home() {
-const[inputVal, setinputVal] = useState("")
-const {push} =useRouter()
+export interface inputProps {
+  inputValue: string;
+}
 
-const handleSubmit = (event: any) => {
-  event.preventDefault();
-  push(`/submission/${inputVal} `);
-};
+export default function Home({ inputValue }: inputProps) {
+  const [inputVal, setinputVal] = useState<string>("");
+  const router = useRouter();
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    router.push(`/submission/${inputVal} `);
+
+    console.log(inputVal);
+  };
 
   return (
     <main className="flex flex-col md:flex-row-reverse items-center justify-between gap-4 ">
@@ -39,13 +44,15 @@ const handleSubmit = (event: any) => {
             type="email"
             placeholder="email@company.com"
             className="bg-white border border-gray-400 w-full mb-3"
-            onChange={(e)=> setinputVal(e.target.value)}
+            onChange={(e) => setinputVal(e.target.value)}
           />
-          
-          <button type="submit"  className="bg-slate-800 text-white w-full py-5 rounded-lg text-xl">
+
+          <button
+            type="submit"
+            className="bg-slate-800 text-white w-full py-5 rounded-lg text-xl"
+          >
             Subscribe to monthly newsletter
           </button>
-          
         </form>
       </div>
     </main>
