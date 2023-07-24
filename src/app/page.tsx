@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import mobile from "../../public/mobile.svg";
-import desktop from "../../public/desktop.svg";
+// import desktop from "../../public/desktop.svg";
+import icon from "../../public/icon.svg";
 
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
@@ -18,38 +19,59 @@ export default function Home({ inputValue }: inputProps) {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     router.push(`/submission/${inputVal} `);
-
-    console.log(inputVal);
   };
 
   return (
-    <main className="flex flex-col md:flex-row-reverse items-center justify-between gap-4 ">
+    <main>
       <Image className="w-full object-contain  " src={mobile} alt={""} />
       <div className="my-10 flex flex-col mx-10">
         <h1 className="text-black font-bold text-2xl items-center mb-4">
           Stay updated!
         </h1>
         <p>Join 60,000+ product managers receiving monthly updates on:</p>
-        <div className="">
-          <ul>
-            <li>Product discovery and building what matters</li>
-            <li>Measuring to ensure updates are a success</li>
-            <li>And much more!</li>
-          </ul>
-        </div>
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3" action="">
-          <label htmlFor="">Email address</label>
-          <input
-            type="email"
-            placeholder="email@company.com"
-            className="bg-white border border-gray-400 w-full mb-3"
-            onChange={(e) => setinputVal(e.target.value)}
-          />
+        <ul>
+          <li className="pb-3 sm:pb-4">
+            <div className="flex items-center space-x-4">
+              <div className="flex-shrink-0">
+                <Image src={icon} alt="" />
+              </div>
+              <div>
+                <p>Product discovery and building what matters</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="flex-shrink-0">
+                <Image src={icon} alt="" />
+              </div>
+              <div>
+                <p>Measuring to ensure updates are a success</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="flex-shrink-0">
+                <Image src={icon} alt="" />
+              </div>
+              <div>
+                <p>And much more</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3" >
+          <label className="font-semibold mt-9">
+            Email address
+            <input
+              type="email"
+              name="email"
+              placeholder="email@company.com"
+              className="bg-white border border-gray-400 w-full mt-2 py-4 px-4 rounded-lg "
+              onChange={(e) => setinputVal(e.target.value)}
+            />
+          </label>
 
           <button
             type="submit"
-            className="bg-slate-800 text-white w-full py-5 rounded-lg text-xl"
+            className="bg-slate-800 text-white w-full py-5 mt-2 rounded-lg text-sm"
           >
             Subscribe to monthly newsletter
           </button>
