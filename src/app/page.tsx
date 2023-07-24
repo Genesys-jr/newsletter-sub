@@ -9,10 +9,10 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export interface inputProps {
-  inputValue: string;
+  inputVal: string;
 }
 
-export default function Home({ inputValue }: inputProps) {
+export default function Home() {
   const [inputVal, setinputVal] = useState<string>("");
   const router = useRouter();
 
