@@ -15,7 +15,7 @@ export default function Page({ params }: Params) {
   };
 
   return (
-    <div className="flex flex-col mx-10 h-screen">
+    <div className="flex flex-col mx-10 h-screen md:bg-slate-700 md:w-full">
       <Image src={success} alt="" className="object-contain my-10" />
 
       <h1 className="text-3xl font-bold mb-10">Thanks for subscribing!</h1>
